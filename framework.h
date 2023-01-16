@@ -11,6 +11,7 @@
 #include<set>
 #include <cassert>
 using namespace std;
+
 #pragma region 基本结构
 //二维向量
 typedef struct
@@ -285,7 +286,7 @@ public:
 
 #pragma region 生命周期干涉操作
 	//画布初始化
-	void Show(void start(Canvas& canvas), void update(Canvas& canvas), void ongui(Canvas& canvas))
+	void Show(void start(Canvas& canvas), void update(Canvas& canvas), void ongui(Canvas& canvas),bool showConsole=false)
 	{
 		//生命周期
 		OnStart = start;
@@ -293,7 +294,7 @@ public:
 		OnGUI = ongui;
 
 		//设置背景颜色
-		window = initgraph(width, height);
+		window = showConsole?initgraph(width, height, EW_SHOWCONSOLE): initgraph(width, height);
 		setbkcolor(bgc);
 		cleardevice();
 
@@ -344,6 +345,7 @@ public:
 #pragma endregion
 };
 #pragma endregion
+
 #pragma region 矩形操作
 
 //通过四个边界坐标创建矩形
@@ -459,14 +461,6 @@ public:
 		rect = rct;
 		loadimage(&img, path.c_str(), rect.width, rect.height);
 	}
-	Image(Rect rct,int res,const char* resType = "IMAGE")
-	{
-
-		pureColor = true;
-		rect = rct;
-		
-		loadimage(&img, resType, MAKEINTRESOURCE(res), rect.width, rect.height);
-	}
 	Image(Rect rct, COLORREF c)
 	{
 		img = NULL;
@@ -534,7 +528,6 @@ class Button : public GUI
 		if (t != nullptr)t->OnGUI();
 		if (box != nullptr)box->OnGUI();
 	}
-
 	void OnEvent(ExMessage* message) override
 	{
 		//处理子对象消息
@@ -583,6 +576,21 @@ public:
 		a = img;
 		t = txt;
 		box = edge;
+	}
+	Button(Rect rct,COLORREF imgColor, string txt, COLORREF fColor, COLORREF edgeColor)
+	{
+		Image* img = new Image(rct, imgColor);
+		Text* t = new Text(txt, rct,"宋体",fColor, true);
+		LineBox* lb = new LineBox(rct, edgeColor);
+		a = img;
+		t = t;
+		box = lb;
+	}
+	~Button()
+	{
+		delete a;
+		delete t;
+		delete box;
 	}
 };
 //可自定义的网格

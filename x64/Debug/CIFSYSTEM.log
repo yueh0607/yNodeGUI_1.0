@@ -1,1 +1,7 @@
-﻿  CIFSYSTEM.vcxproj -> X:\Projects\C Projects\CIFSYSTEM\x64\Debug\CIFSYSTEM.exe
+﻿  core.cpp
+X:\Projects\C Projects\CIFSYSTEM\framework.h(42,45): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+X:\Projects\C Projects\CIFSYSTEM\node_menu.h(175,1): warning C4267: “=”: 从“size_t”转换到“SHORT”，可能丢失数据
+X:\Projects\C Projects\CIFSYSTEM\core.cpp(203,43): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+X:\Projects\C Projects\CIFSYSTEM\core.cpp(375,29): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+X:\Projects\C Projects\CIFSYSTEM\core.cpp(364,10): warning C4101: “temp”: 未引用的局部变量
+  CIFSYSTEM.vcxproj -> X:\Projects\C Projects\CIFSYSTEM\x64\Debug\CIFSYSTEM.exe

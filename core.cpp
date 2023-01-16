@@ -14,6 +14,8 @@
 #include "resource.h"
 using namespace std;
 
+#pragma region Defines
+
 #define LINESIGN "Line:"
 #define ENDSIGN "End"
 #define FILENAME1 "course.data"
@@ -25,6 +27,8 @@ using namespace std;
 #define GIRDFONTCOLOR BLACK
 #define GIRDLINECOLOR BLACK
 #define FONTNAME "宋体"
+
+#pragma endregion
 
 #pragma region 数据结构
 typedef enum
@@ -248,7 +252,7 @@ void read_courses(vector<Course*>& courses, string fileName)
 
 #pragma endregion
 
-#pragma region 具体功能
+#pragma region 功能实现
 #pragma region 课程信息录入
 //录入课程信息
 void input(Menu& menu, Canvas& canvas)
@@ -632,8 +636,7 @@ void OnStart(Canvas& canvas)
 			Button* btn = new Button(background, text, edge);
 			//添加按钮监听回调
 			btn->AddListener([i,&canvas]() {menu->Next(i + 1);});
-			//收集无关组件和注册
-			canvas.Env(0).Collect(background, text, edge);
+			//注册
 			canvas.Env(0).Register(node->childs[i]->InstanceId(), btn);
 			que.push(node->childs[i]);
 		}
@@ -668,7 +671,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb = new LineBox(rct, LINEBOXCOLOR);
 	Button* ret = new Button(bg, txt, lb);
 	ret->AddListener([&]() {menu->Last(); page1 = 0; });
-	canvas.Env(1).Collect(bg, txt, lb);
 	ret_id = ret->InstanceId();
 	canvas.Env(1).Register(ret_id, ret);
 
@@ -679,7 +681,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb2 = new LineBox(rc2, LINEBOXCOLOR);
 	Button* ret2 = new Button(bg2, txt2, lb2);
 	ret2->AddListener([&]() {lastPage(canvas); });
-	canvas.Env(1).Collect(bg2, txt2, lb2);
 	last_id = ret2->InstanceId();
 	canvas.Env(1).Register(last_id, ret2);
 
@@ -690,7 +691,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb3 = new LineBox(rc3, LINEBOXCOLOR);
 	Button* ret3 = new Button(bg3, txt3, lb3);
 	ret3->AddListener([&]() {nextPage(canvas); });
-	canvas.Env(1).Collect(bg3, txt3, lb3);
 	next_id = ret3->InstanceId();
 	canvas.Env(1).Register(next_id, ret3);
 #pragma endregion
@@ -702,7 +702,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb4 = new LineBox(rc4, LINEBOXCOLOR);
 	Button* ret4 = new Button(bg4, txt4, lb4);
 	ret4->AddListener([&]() {sortByid(courses); page1 = 0; lastPage(canvas); });
-	canvas.Env(1).Collect(bg4, txt4, lb4);
 	id_sort = ret4->InstanceId();
 	canvas.Env(1).Register(id_sort, ret4);
 
@@ -713,7 +712,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb5 = new LineBox(rc5, LINEBOXCOLOR);
 	Button* ret5 = new Button(bg5, txt5, lb5);
 	ret5->AddListener([&]() {sortByTime(courses); page1 = 0; lastPage(canvas); });
-	canvas.Env(1).Collect(bg5, txt5, lb5);
 	time_sort = ret5->InstanceId();
 	canvas.Env(1).Register(time_sort, ret5);
 
@@ -724,7 +722,6 @@ void OnStart(Canvas& canvas)
 	LineBox* lb6 = new LineBox(rc6, LINEBOXCOLOR);
 	Button* ret6 = new Button(bg6, txt6, lb6);
 	ret6->AddListener([&]() {sortByCredit(courses); page1 = 0; lastPage(canvas); });
-	canvas.Env(1).Collect(bg6, txt6, lb6);
 	credit_sort = ret6->InstanceId();
 	canvas.Env(1).Register(credit_sort, ret6);
 #pragma endregion
@@ -761,6 +758,6 @@ void OnUpdate(Canvas& canvas)
 int main()
 {
 	Canvas canvas = { 1000,600,90, RGB(255,255,255) }; //创建1000*600的窗户，背景色为白色
-	canvas.Show(OnStart, OnUpdate, OnGUI); //初始化GUI画布并启动生命周期，阻塞程序
+	canvas.Show(OnStart, OnUpdate, OnGUI,true); //初始化GUI画布并启动生命周期，阻塞程序,显示小黑窗
 	return 0;
 }
