@@ -18,13 +18,15 @@
 # API使用
 
 1.Main函数内创建图形界面
-//创建画布
-Canvas canvas = { 1000,600,90, RGB(255,255,255) }; 
-//展示GUI并阻塞程序
-canvas.Show(OnStart, OnUpdate, OnGUI,true); 
+
+	//创建画布
+	Canvas canvas = { 1000,600,90, RGB(255,255,255) }; 
+	//展示GUI并阻塞程序
+	canvas.Show(OnStart, OnUpdate, OnGUI,true); 
 
 2.在Start内定义菜单节点
-  //创建根节点和节点菜单管理器
+
+  	//创建根节点和节点菜单管理器
 	Node* root = new Node();
 	menu = new Menu(root, &canvas);
 
@@ -47,9 +49,12 @@ canvas.Show(OnStart, OnUpdate, OnGUI,true);
 	Node* n3 = new Node(m4, "返回", last_menu, true);
   
 3. 注册和渲染 /这些内容可以在不同的位置实现，具体请看Core.cpp文件内的示例
-int id = node->childs[i]->InstanceId()
-canvas.Env(0).Register(id, btn);
-canvas.Env(0).Draw(id);
+
+	//注册重绘机制
+	int id = node->childs[i]->InstanceId();
+	canvas.Env(0).Register(id, btn);
+	canvas.Env(0).Draw(id);
+
 
 # demo展示 课程管理信息系统
 ![XU46_ WNAT(@N9X7@Q96~DP(1)](https://user-images.githubusercontent.com/102401735/210708153-57b217cd-1c39-4807-a5a6-3491b8a3aa7c.png)
