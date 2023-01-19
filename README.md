@@ -3,7 +3,7 @@
 
 2.目标人群：主要针对有面向对象基础的同学，要求掌握一定easyx和C++的基本语法
 
-3.使用方式:仅拷贝node_menu.h和framework.h到项目内，建议使用Microsoft VisualStudio,并在easyx官网（https://easyx.cn/）安装easyx
+3.使用方式:仅拷贝node_menu.h和framework.h到项目内，建议使用Microsoft VisualStudio,并在easyx官网（https://easyx.cn/）   .安装easyx
 
 4.打包方式:将VS切换到Release分支，在项目Release设置内，代码生成选择MT，即可脱离C++和easyx环境运行
 # 功能
