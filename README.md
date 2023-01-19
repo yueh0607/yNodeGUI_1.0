@@ -51,8 +51,11 @@
 3. 注册和渲染 /这些内容可以在不同的位置实现，具体请看Core.cpp文件内的示例
 
 	//注册重绘机制
+	
 	int id = node->childs[i]->InstanceId();
+	
 	canvas.Env(0).Register(id, btn);
+	
 	canvas.Env(0).Draw(id);
 
 
