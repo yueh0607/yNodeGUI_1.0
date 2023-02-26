@@ -1,9 +1,12 @@
 # yNodeGUI
 1.定位：针对于简易C++游戏开发或者xxx系统期末大作业开发
 
-2.目标人群：主要针对有面向对象基础的同学，要求掌握一定easyx和C++的基本语法
+2.目标人群：主要针对有面向对象基础者，要求掌握一定easyx和C++的基本语法
 
 3.使用方式:仅拷贝node_menu.h和framework.h到项目内，建议使用Microsoft VisualStudio,并在easyx官网（https://easyx.cn/  ）   .安装easyx
+
+core.cpp作为参考，基本可以照搬来写，或者可以把我定义的Node和函数删掉来自己改，
+另外这个项目是我的大一上学期期末作业，时间比较匆忙可能存在部分机制不合理的地方，代码简单可以自行修改
 
 4.打包方式:将VS切换到Release分支，在项目Release设置内，代码生成选择MT，即可脱离C++和easyx环境运行
 # 功能
