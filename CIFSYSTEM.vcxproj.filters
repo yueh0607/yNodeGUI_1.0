@@ -30,14 +30,4 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="CIFSYSTEM.rc">
-      <Filter>资源文件</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\background.jpg">
-      <Filter>资源文件</Filter>
-    </Image>
-  </ItemGroup>
 </Project>

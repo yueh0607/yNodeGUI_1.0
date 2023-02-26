@@ -147,12 +147,6 @@
     <ClInclude Include="node_menu.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="CIFSYSTEM.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\background.jpg" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

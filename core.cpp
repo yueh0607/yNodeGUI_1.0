@@ -617,30 +617,8 @@ void OnStart(Canvas& canvas)
 #pragma endregion
 #pragma region 节点菜单GUI注册
 
-	//N叉树节点层次遍历，注册按钮
-	queue<Node*> que;
-	que.push(root);
-	while (!que.empty())
-	{
-		Node* node = que.front();
-		que.pop();
-		for (int i = 0; i < node->childs.size(); i++)
-		{
-			//计算Button位置和范围
-			Vector2 center = { canvas.Center().x ,100 * i + 100 };
-			Rect rect = createRectbyCenter(center, 300, 50);
-			//创建GUI组件
-			Image* background = new Image(rect, BUTTONCOLOR);
-			Text* text = new Text(node->childs[i]->tag.c_str(), rect, FONTNAME, BUTTONFONTCOLOR);
-			LineBox* edge = new LineBox(rect, LINEBOXCOLOR, 10);
-			Button* btn = new Button(background, text, edge);
-			//添加按钮监听回调
-			btn->AddListener([i,&canvas]() {menu->Next(i + 1);});
-			//注册
-			canvas.Env(0).Register(node->childs[i]->InstanceId(), btn);
-			que.push(node->childs[i]);
-		}
-	}
+	menu->RegisterMenuByRootNode( 0, 100, 100, 300, 50,10, BUTTONCOLOR, BUTTONFONTCOLOR, LINEBOXCOLOR, FONTNAME);
+
 #pragma endregion
 #pragma region 背景注册
 	Image* background = new Image(createRectbyPoint(0, 0, 1000, 600),BGFILENAME);

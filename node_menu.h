@@ -83,7 +83,7 @@ public:
 class Menu :public Instance
 {
 	Node* root;  //根节点
-	
+
 	Menu() = default;
 public:
 	//当前节点,虽然可以被修改了，但是不管了....累
@@ -124,6 +124,47 @@ public:
 		if (current->onceFunc != nullptr) current->onceFunc(*this);
 	}
 
+	/// <summary>
+	/// 注册根节点组成的菜单
+	/// </summary>
+	/// <param name="root">根节点</param>
+	/// <param name="xOffest">x偏移，在画布中心x的基础上偏移</param>
+	/// <param name="yOffest">y偏移，在画布最顶端的基础上向下偏移</param>
+	/// <param name="yStep">按钮生成的步长</param>
+	/// <param name="width">按钮宽度</param>
+	/// <param name="height">按钮高度</param>
+	/// <param name="edgeWidth">线框边缘厚度</param>
+	/// <param name="buttonColor">按钮背景颜色</param>
+	/// <param name="fontColor">字体颜色</param>
+	/// <param name="lineColor">线框颜色</param>
+	/// <param name="fontName">字体名称</param>
+	void RegisterMenuByRootNode( int xOffest, int yOffest, int yStep, int width, int height,int edgeWidth, COLORREF buttonColor, COLORREF fontColor, COLORREF lineColor, string fontName)
+	{
+		//N叉树节点层次遍历，注册按钮
+		queue<Node*> que;
+		que.push(root);
+		while (!que.empty())
+		{
+			Node* node = que.front();
+			que.pop();
+			for (int i = 0; i < node->childs.size(); i++)
+			{
+				//计算Button位置和范围
+				Vector2 center = { canvas->Center().x+xOffest ,yStep * i + yOffest };
+				Rect rect = createRectbyCenter(center, width, height);
+				//创建GUI组件
+				Image* background = new Image(rect, buttonColor);
+				Text* text = new Text(node->childs[i]->tag.c_str(), rect, fontName, fontColor);
+				LineBox* edge = new LineBox(rect, lineColor, edgeWidth);
+				Button* btn = new Button(background, text,edge);
+				//添加按钮监听回调
+				btn->AddListener([i,this]() {Next(i + 1); });
+				//注册
+				canvas->Env(0).Register(node->childs[i]->InstanceId(), btn);
+				que.push(node->childs[i]);
+			}
+		}
+	}
 #pragma endregion
 };
 //输入组，负责一次性读取控制台输入
