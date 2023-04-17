@@ -18,16 +18,21 @@
 将菜单抽象为N叉树，能高效处置多级深度菜单，自动实现全流程的固定形式菜单渲染
 # API使用
 0.引入头文件
-	#include"yNodeGUI.h";
+
+```c++
+#include"yNodeGUI.h"
+```
+
 
 1.Main函数内创建图形界面
+```c++
 	//创建画布
 	Canvas canvas = { 1000,600,90, RGB(255,255,255) }; 
 	//展示GUI并阻塞程序
 	canvas.Show(OnStart, OnUpdate, OnGUI,true); 
-
+```
 2.在Start内定义菜单节点
-
+```c++
   	//创建根节点和节点菜单管理器
 	Node* root = new Node();
 	menu = new Menu(root, &canvas);
@@ -49,9 +54,9 @@
 	Node* n1 = new Node(m4, "自由选课", choose, true);
 	Node* n2 = new Node(m4, "已选课程查看", view_selected, true, fresh_selected);
 	Node* n3 = new Node(m4, "返回", last_menu, true);
-  
+  ```
 3. 注册和渲染 /这些内容可以在不同的位置实现，具体请看Core.cpp文件内的示例
-
+```c++
 	//注册重绘机制
 	
 	int id = node->childs[i]->InstanceId();
@@ -59,7 +64,7 @@
 	canvas.Env(0).Register(id, btn);
 	
 	canvas.Env(0).Draw(id);
-
+  ```
 
 # demo展示 课程管理信息系统
 ![XU46_ WNAT(@N9X7@Q96~DP(1)](https://user-images.githubusercontent.com/102401735/210708153-57b217cd-1c39-4807-a5a6-3491b8a3aa7c.png)
