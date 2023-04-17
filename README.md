@@ -3,7 +3,7 @@
 
 2.使用基础：有一定面向对象基础和IMGUI使用经验，或者easyx的使用经验
 
-3.使用方式:仅拷贝yNodeGUIFrameowrk目录下的文件到项目内，并在easyx官网（https://easyx.cn/  ）.安装easyx(仅支持VisualStudio)
+3.使用方式:仅在VisualStudio导入yNodeGUIFrameowrk目录下的文件到项目内，并在easyx官网（https://easyx.cn/  ）.安装easyx(仅支持VisualStudio)
 
 4.打包方式: 将VS切换到Release分支，在项目Release设置内，代码生成选择MT，即可脱离C++和easyx环境运行,如果在过程中加载了资源，请在打包后的目录里相对exe文件进行补充，框架不支持VS的Resources
 
