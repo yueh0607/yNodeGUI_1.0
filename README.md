@@ -1,4 +1,5 @@
-# yNodeGUI v1.0（建议看我的2.0版本，那个修复了不少bug并且更简单支持更完善，而且也有sample，[点这里跳转](x)）
+# yNodeGUI v1.0
+（这里建议看我的2.0版本，那个修复了不少bug并且更简单支持更完善，而且也有sample，[点这里跳转](https://github.com/yueh0607/yNodeGUI_v2.0/)
 1.定位：针对于简易C++管理系统开发，提供简单的基于easyx的GUI固定渲染和简单的无限层级菜单解决方案
 
 2.使用基础：有一定面向对象基础和IMGUI使用经验，或者easyx的使用经验
@@ -74,7 +75,4 @@ demo仓库：https://github.com/yueh0607/yNodeGUI_Sample
 ![`)A$IB%W9_S(ZG` EIVYS0T(1)](https://user-images.githubusercontent.com/102401735/210708171-f9381628-22e6-4f81-b43f-cf506db0c33f.png)
 ![image](https://user-images.githubusercontent.com/102401735/210708204-9b2827bd-805b-4eec-ae7c-e2bae25f54c8.png)
 
-# 缺陷
-1.没有实现输入框和更多的GUI组件，具备一定局限性
-2.采用 Env-Id 帧重绘，不适合过于复杂的项目，不过应付学校大作业来讲完全不是问题，甚至更方便
-3.没有实现重绘消息剔除，只能驾驭小游戏或者性能要求低的项目
+
